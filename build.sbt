@@ -1,5 +1,7 @@
+val previousVersion = "1.0.0-RC1"
+
 inThisBuild(Def.settings(
-  version := "1.0.0-RC1",
+  version := "1.0.0-SNAPSHOT",
   organization := "org.scala-js",
 
   crossScalaVersions := Seq("2.12.6", "2.10.7", "2.11.12", "2.13.0-M4", "2.13.0-M5"),
@@ -17,6 +19,9 @@ inThisBuild(Def.settings(
 
 lazy val `scalajs-stubs`: Project = project.in(file("."))
   .settings(
+    mimaPreviousArtifacts +=
+      organization.value %% moduleName.value % previousVersion,
+
     publishMavenStyle := true,
     publishTo := {
       val nexus = "https://oss.sonatype.org/"

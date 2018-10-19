@@ -9,7 +9,7 @@ scala:
 jdk:
   - oraclejdk8
 script:
-  - sbt ++$TRAVIS_SCALA_VERSION scalajs-stubs/publishLocal
+  - sbt ++$TRAVIS_SCALA_VERSION scalajs-stubs/publishLocal scalajs-stubs/mimaReportBinaryIssues
 cache:
   directories:
     - $HOME/.ivy2/cache
