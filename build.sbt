@@ -1,7 +1,7 @@
 val previousVersion = "1.0.0-RC1"
 
 inThisBuild(Def.settings(
-  version := "1.0.0-SNAPSHOT",
+  version := "1.0.0",
   organization := "org.scala-js",
 
   crossScalaVersions := Seq("2.12.8", "2.10.7", "2.11.12", "2.13.0"),
