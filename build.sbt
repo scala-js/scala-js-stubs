@@ -8,6 +8,8 @@ inThisBuild(Def.settings(
   scalaVersion := crossScalaVersions.value.head,
   scalacOptions ++= Seq("-deprecation", "-feature", "-Xfatal-warnings"),
 
+  versionScheme := Some("semver-spec"),
+
   homepage := Some(url("https://www.scala-js.org/")),
   licenses += ("BSD New",
       url("https://github.com/scala-js/scala-js-stubs/blob/master/LICENSE")),
