@@ -4,7 +4,7 @@ inThisBuild(Def.settings(
   version := "1.0.1-SNAPSHOT",
   organization := "org.scala-js",
 
-  crossScalaVersions := Seq("2.12.8", "2.10.7", "2.11.12", "2.13.0"),
+  crossScalaVersions := Seq("2.12.14", "2.10.7", "2.11.12", "2.13.6", "3.0.0"),
   scalaVersion := crossScalaVersions.value.head,
   scalacOptions ++= Seq("-deprecation", "-feature", "-Xfatal-warnings"),
 
