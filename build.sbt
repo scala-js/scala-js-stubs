@@ -4,7 +4,7 @@ inThisBuild(Def.settings(
   version := "1.1.0-SNAPSHOT",
   organization := "org.scala-js",
 
-  crossScalaVersions := Seq("2.12.8", "2.10.7", "2.11.12", "2.13.0"),
+  crossScalaVersions := Seq("2.12.8", "2.10.7", "2.11.12", "2.13.0", "3.0.0"),
   scalaVersion := crossScalaVersions.value.head,
   scalacOptions ++= Seq("-deprecation", "-feature", "-Xfatal-warnings"),
 
@@ -21,8 +21,15 @@ inThisBuild(Def.settings(
 
 lazy val `scalajs-stubs`: Project = project.in(file("."))
   .settings(
-    mimaPreviousArtifacts +=
-      organization.value %% moduleName.value % previousVersion,
+    mimaPreviousArtifacts ++= {
+      if (scalaBinaryVersion.value == "3") Set.empty // new in this release
+      else Set(organization.value %% moduleName.value % previousVersion)
+    },
+
+    /* Do not fail mimaReportBinaryIssues when mimaPreviousArtifacts is empty.
+     * We specifically set it to empty above when binary compat is irrelevant.
+     */
+    mimaFailOnNoPrevious := false,
 
     publishMavenStyle := true,
     publishTo := {
