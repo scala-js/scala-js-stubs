@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        scalaversion: ["2.10.7", "2.11.12", "2.12.8", "2.13.0"]
+        scalaversion: ["2.10.7", "2.11.12", "2.12.8", "2.13.0", "3.0.0"]
     steps:
       - uses: actions/checkout@v2
       - uses: olafurpg/setup-scala@v10
@@ -21,5 +21,9 @@ jobs:
       - uses: coursier/cache-action@v5
       - name: Build
         run: sbt "++${{ matrix.scalaversion }}" scalajs-stubs/publishLocal
+
+      # MiMa is not run for the Scala 2.10.x artifact because there is no
+      # version of sbt-mima that works with sbt 1.5.x and for Scala 2.10.x.
       - name: MiMa
+        if: matrix.scalaversion != '2.10.7'
         run: sbt "++${{ matrix.scalaversion }}" scalajs-stubs/mimaReportBinaryIssues
