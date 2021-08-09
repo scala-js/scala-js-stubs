@@ -1,7 +1,7 @@
-val previousVersion = "1.0.0"
+val previousVersion = "1.1.0"
 
 inThisBuild(Def.settings(
-  version := "1.1.0",
+  version := "1.1.1-SNAPSHOT",
   organization := "org.scala-js",
 
   crossScalaVersions := Seq("2.12.8", "2.10.7", "2.11.12", "2.13.0", "3.0.0"),
@@ -22,8 +22,7 @@ inThisBuild(Def.settings(
 lazy val `scalajs-stubs`: Project = project.in(file("."))
   .settings(
     mimaPreviousArtifacts ++= {
-      if (scalaBinaryVersion.value == "3") Set.empty // new in this release
-      else Set(organization.value %% moduleName.value % previousVersion)
+      Set(organization.value %% moduleName.value % previousVersion)
     },
 
     /* Do not fail mimaReportBinaryIssues when mimaPreviousArtifacts is empty.
