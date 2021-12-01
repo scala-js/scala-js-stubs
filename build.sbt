@@ -12,7 +12,7 @@ inThisBuild(Def.settings(
 
   homepage := Some(url("https://www.scala-js.org/")),
   licenses += ("BSD New",
-      url("https://github.com/scala-js/scala-js-stubs/blob/master/LICENSE")),
+      url("https://github.com/scala-js/scala-js-stubs/blob/main/LICENSE")),
   scmInfo := Some(ScmInfo(
       url("https://github.com/scala-js/scala-js-stubs"),
       "scm:git:git@github.com:scala-js/scala-js-stubs.git",
